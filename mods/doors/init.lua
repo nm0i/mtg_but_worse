@@ -398,31 +398,6 @@ function doors.register(name, def)
 	if def.protected then
 		def.can_dig = can_dig_door
 		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this locked door."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked door"), owner
-		end
 		def.node_dig_prediction = ""
 	else
 		def.on_blast = function(pos, intensity)
@@ -614,31 +589,6 @@ function doors.register_trapdoor(name, def)
 		end
 
 		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this trapdoor."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked trapdoor"), owner
-		end
 		def.node_dig_prediction = ""
 	else
 		def.on_blast = function(pos, intensity)
