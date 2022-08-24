@@ -1,49 +1,42 @@
-local node_box = {
-			type = "connected",
-			fixed = {{-1/4, -1/2, -1/4, 1/4, 1/2, 1/4}},
-			-- connect_bottom =
-			connect_front = {{-3/16, -1/2, -1/2,  3/16, 3/8, -1/4}},
-			connect_left = {{-1/2, -1/2, -3/16, -1/4, 3/8,  3/16}},
-			connect_back = {{-3/16, -1/2,  1/4,  3/16, 3/8,  1/2}},
-			connect_right = {{ 1/4, -1/2, -3/16,  1/2, 3/8,  3/16}},
-		}
 
-local register_wall = function(base_node)
+walls.register_wall("darkage:basalt_rubble", {
+	description = "Basalt Rubble Wall",
+	texture = "darkage_basalt_rubble.png",
+	material = "darkage:basalt_rubble",
+})
 
-	local name = base_node .. "_wall"
-	local ndef = minetest.registered_nodes[base_node]
-	local groups = ndef.groups
-	groups["wall"] = 1
-	-- inventory node, and pole-type wall start item
-	minetest.register_node(name, {
-		description = ndef.description .. " Wall",
-		drawtype = "nodebox",
-		node_box = node_box,
-		connects_to = {base_node,"group:wall"},
-		paramtype = "light",
-		is_ground_content = false,
-		tiles = ndef.tiles,
-		walkable = true,
-		groups = groups,
-		sounds = ndef.sounds,
-	})
+walls.register_wall("darkage:ors_rubble", {
+	description = "Ors Rubble Wall",
+	texture = "darkage_ors_rubble.png",
+	material = "darkage:ors_rubble",
+})
 
-	-- crafting recipe
-	minetest.register_craft({
-		output = name .. " 6",
-		recipe = {
-			{ '', '', '' },
-			{ base_node, base_node, base_node},
-			{ base_node, base_node, base_node},
-		}
-	})
+walls.register_wall("darkage:stone_brick", {
+	description = "Stone Brick Wall",
+	texture = "darkage_stone_brick.png",
+	material = "darkage:stone_brick",
+})
 
-end
+walls.register_wall("darkage:slate_rubble", {
+	description = "Slate Rubble Wall",
+	texture = "darkage_slate_rubble.png",
+	material = "darkage:slate_rubble",
+})
 
-register_wall("darkage:basalt_rubble")
-register_wall("darkage:ors_rubble")
-register_wall("darkage:stone_brick")
-register_wall("darkage:slate_rubble")
-register_wall("darkage:tuff_bricks")
-register_wall("darkage:old_tuff_bricks")
-register_wall("darkage:rhyolitic_tuff_bricks")
+walls.register_wall("darkage:tuff_bricks", {
+	description = "Tuff Brick Wall",
+	texture = "darkage_tuff_bricks.png",
+	material = "darkage:tuff_bricks",
+})
+
+walls.register_wall("darkage:old_tuff_bricks", {
+	description = "Old Tuff Brick Wall",
+	texture = "darkage_old_tuff_bricks.png",
+	material = "darkage:old_tuff_bricks",
+})
+
+walls.register_wall("darkage:rhyolitic_tuff_bricks", {
+	description = "Rhyolitic Tuff Brick Wall",
+	texture = "darkage_rhyolitic_tuff_bricks.png",
+	material = "darkage:rhyolitic_tuff_bricks",
+})
