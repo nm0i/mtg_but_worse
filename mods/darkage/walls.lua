@@ -40,3 +40,21 @@ walls.register_wall("darkage:rhyolitic_tuff_bricks", {
 	texture = "darkage_rhyolitic_tuff_bricks.png",
 	material = "darkage:rhyolitic_tuff_bricks",
 })
+
+walls.register_wall("darkage:slate_brick", {
+	description = "Slate Brick Wall",
+	texture = "darkage_slate_brick.png",
+	material = "darkage:slate_brick",
+})
+
+walls.register_wall("darkage:gneiss_brick", {
+	description = "Gneiss Brick Wall",
+	texture = "darkage_gneiss_brick.png",
+	material = "darkage:gneiss_brick",
+})
+
+walls.register_wall("darkage:basalt_brick", {
+	description = "Basalt Brick Wall",
+	texture = "darkage_basalt_brick.png",
+	material = "darkage:basalt_brick",
+})
