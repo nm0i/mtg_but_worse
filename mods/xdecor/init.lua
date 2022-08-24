@@ -12,13 +12,11 @@ dofile(modpath .. "/src/nodes.lua")
 dofile(modpath .. "/src/recipes.lua")
 
 local subpart = {
-	"chess",
 	"cooking",
 	"hive",
 	"itemframe",
 	"mechanisms",
 	"rope",
-	"workbench",
 }
 
 for _, name in ipairs(subpart) do
