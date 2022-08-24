@@ -27,6 +27,12 @@ Licenses of media (textures)
 ----------------------------
 
 Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+
+Bottle texture:
+Copyright (C) 2012-2016 Vanessa Ezekowitz
+Copyright (C) 2016 Thomas-S
+
+Everything else:
 Copyright (C) 2018 Shara RedCat
 
 You are free to:
