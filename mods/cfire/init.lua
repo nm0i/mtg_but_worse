@@ -3,7 +3,7 @@ local colors = {
 }
 
 for i = 1, #colors, 1 do
-   node_context = {
+   local node_context = {
       description = colors[i].." flame",
       drawtype = "firelike",
       tiles = {{
