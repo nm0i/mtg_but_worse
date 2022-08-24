@@ -2,13 +2,15 @@
 local sigil = {}
 
 sigil.worldbox = 4000
-   
+
 local sigil_edit_hash = {}
 
 local function sigil_receive_form(player, form_name, fields)
+
    if form_name == "transsigil:editor" and fields.private ~= nil then
       sigil_edit_hash[player:get_player_name()].private = fields.private
    elseif form_name == "transsigil:editor" and fields.link_button ~= nil then
+
       local player_name = player:get_player_name()
       local pos = sigil_edit_hash[player_name].pos
       local facedir = minetest.dir_to_facedir(player:get_look_dir())
@@ -26,7 +28,9 @@ local function sigil_receive_form(player, form_name, fields)
          return
       end
 
-      if(coords.x>math.abs(sigil.worldbox) or coords.y>math.abs(sigil.worldbox) or coords.z>math.abs(sigil.worldbox)) then
+      if ((coords.x>math.abs(sigil.worldbox) or
+           coords.y>math.abs(sigil.worldbox) or
+           coords.z>math.abs(sigil.worldbox))) then
          minetest.chat_send_player(player_name, 'Out of range. Maximum is '..sigil.worldbox..' in any direction')
          return
       end
@@ -83,29 +87,45 @@ local function sigil_onpunch(pos,node,puncher)
          p.x = tonumber(p.x)
          p.y = tonumber(p.y)
          p.z = tonumber(p.z)
-         local ppos = puncher:getpos()
+         local ppos = puncher:get_pos()
          local minp = {x= ppos.x+0.5, y= ppos.y, z= ppos.z+0.5}
          local maxp = {x= ppos.x-0.5,  y= ppos.y, z= ppos.z-0.5}
          local vel = {x=0, y=2, z=0}
          local acc = {x=0, y=0, z=0}
-         minetest.add_particlespawner({amount=4, time=1,
-                                       minpos=minp, maxpos=maxp,
-                                       minvel=vel, maxvel=vel,
-                                       minacc=acc, maxacc=acc,
-                                       minexptime=0.5, maxexptime=1,
-                                       minsize=8, maxsize=16,
-                                       collisiondetection=false, vertical=true, texture="transsigil_particles.png"})         
+         minetest.add_particlespawner({amount=4,
+                                       time=1,
+                                       minpos=minp,
+                                       maxpos=maxp,
+                                       minvel=vel,
+                                       maxvel=vel,
+                                       minacc=acc,
+                                       maxacc=acc,
+                                       minexptime=0.5,
+                                       maxexptime=1,
+                                       minsize=8,
+                                       maxsize=16,
+                                       collisiondetection=false,
+                                       vertical=true,
+                                       texture="transsigil_particles.png"})         
          minetest.sound_play({name = "transsigil_portal", gain=0.3}, {pos=pos, loop=false})
-         puncher:moveto(p,false)
+         puncher:move_to(p,false)
          minp = {x= p.x+0.5, y= p.y, z= p.z+0.5}
          maxp = {x= p.x-0.5,  y= p.y, z= p.z-0.5}
-         minetest.add_particlespawner({amount=4, time=1,
-                                       minpos=minp, maxpos=maxp,
-                                       minvel=vel, maxvel=vel,
-                                       minacc=acc, maxacc=acc,
-                                       minexptime=0.5, maxexptime=1,
-                                       minsize=6, maxsize=16,
-                                       collisiondetection=false, vertical=true, texture="transsigil_particles.png"})         
+         minetest.add_particlespawner({amount=4,
+                                       time=1,
+                                       minpos=minp,
+                                       maxpos=maxp,
+                                       minvel=vel,
+                                       maxvel=vel,
+                                       minacc=acc,
+                                       maxacc=acc,
+                                       minexptime=0.5,
+                                       maxexptime=1,
+                                       minsize=6,
+                                       maxsize=16,
+                                       collisiondetection=false,
+                                       vertical=true,
+                                       texture="transsigil_particles.png"})         
          minetest.sound_play({name = "transsigil_portal", gain=0.3}, {pos=p, loop=false})
       end
    end
@@ -142,7 +162,7 @@ minetest.register_node("transsigil:sigil_blank", {
                              sigil_edit_hash[player_name].private = "false"
                              minetest.show_formspec(player_name, "transsigil:editor",formspec)
                           end
-                                                 })
+})
 
 minetest.register_node("transsigil:sigil_f", {
                           description = "Portal sigil",
@@ -164,7 +184,7 @@ minetest.register_node("transsigil:sigil_f", {
                           sounds = default.node_sound_stone_defaults(),
                           on_rightclick = sigil_rightclick,
                           on_punch = sigil_onpunch
-                                             })
+})
 
 minetest.register_node("transsigil:sigil_p", {
                           description = "Portal sigil",
@@ -186,7 +206,7 @@ minetest.register_node("transsigil:sigil_p", {
                           sounds = default.node_sound_stone_defaults(),
                           on_rightclick = sigil_rightclick,
                           on_punch = sigil_onpunch                          
-                                             })
+})
 
 minetest.register_on_player_receive_fields(sigil_receive_form)
 
