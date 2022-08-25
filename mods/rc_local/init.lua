@@ -40,7 +40,7 @@ minetest.register_globalstep(function(dtime)
             pos.x = sign(pos.x)*(worldbox_limit - 4)
             player:moveto(pos,false)
             minetest.chat_send_player(name,"Invisible force pulls you back")
-         elseif math.abs(pos.z) > 2128 then
+         elseif math.abs(pos.z) > worldbox_limit then
             pos.z = sign(pos.z)*(worldbox_limit - 4)
             player:moveto(pos,false)
             minetest.chat_send_player(name,"Invisible force pulls you back")
