@@ -15,7 +15,7 @@ local worldbox_limit = 2048
 minetest.register_globalstep(function(dtime)
       for _, player in pairs(minetest.get_connected_players()) do
          local name = player:get_player_name()
-         local pos = player:getpos()
+         local pos = player:get_pos()
          if math.abs(pos.x) > worldbox_limit then
             pos.x = sign(pos.x)*(worldbox_limit - 4)
             player:moveto(pos,false)
