@@ -3,26 +3,27 @@
 local doordefs = {
 --	{ Suffix, Desc Base, ImageName, 
 	{ "gwd1",	"Decorative Wooden Door 1",	"glswood1" },
-	{ "gwd2",	"Decorative Wooden Door 2",	"glsacacia1" },
-	{ "gwd3",	"Decorative Wooden Door 3",	"glsjungle1" },
+	{ "gwd2",	"Decorative Wooden Door 1",	"glsacacia1" },
+	{ "gwd3",	"Decorative Wooden Door 1",	"glsjungle1" },
+	{ "gwd10",	"Decorative Wooden Door 2",	"glswood2" },
+	{ "gwd11",	"Decorative Wooden Door 2",	"glsacacia2" },
+	{ "gwd12",	"Decorative Wooden Door 2",	"glsjungle2" },
+	{ "gwd13",	"Decorative Wooden Door 2",	"glshealing2" },
+	{ "gwd14",	"Decorative Wooden Door 2",	"glsfrost2" },
+	{ "gwd15",	"Decorative Wooden Door 3",	"glswood3" },
+	{ "gwd16",	"Decorative Wooden Door 3",	"glsacacia3" },
+	{ "gwd17",	"Decorative Wooden Door 3",	"glsjungle3" },
 	{ "wd1",	"Wooden Door 1",		"wood1" },
 	{ "wd2",	"Wooden Door 2",		"acacia1" },
 	{ "wd3",	"Wooden Door 3",		"jungle1" },
+	{ "wd4",	"Wodden Door 4",		"healing1" },
+	{ "wd5",	"Wodden Door 5",		"frost1" },
 }
 
 for i,ddef in ipairs(doordefs) do
 	local suffix = ddef[1]
 	local desc = ddef[2]
 	local img = ddef[3]
-
-	-- doors.register_door("yadm:door_"..suffix.."_locked", {
-	-- 	description = desc.." Locked",
-	-- 	inventory_image = "yadm_"..img.."_inv.png",
-	-- 	groups = { choppy = 2, cracky = 2, door = 1 },
-	-- 	tiles = {{ name = "yadm_"..img..".png", backface_culling = true }},
-	-- 	protected = true,
-	-- 	drop = "yadm:door_"..suffix.."_locked",
-	-- })
 
 	doors.register_door("yadm:door_"..suffix, {
 		description = desc,
@@ -35,112 +36,30 @@ for i,ddef in ipairs(doordefs) do
 
 end
 
--- -- Crafts
--- -- {{{1 Decorative Wooden Door 1 (apple/default wood)
--- minetest.register_craft({ 
--- 	output = "yadm:door_gwd1_locked 1",
--- 	recipe = {
--- 		{"default:glass", "default:wood", ""},
--- 		{"default:wood", "default:wood", "default:steel_ingot"},
--- 		{"default:wood", "default:wood", ""}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_gwd1 1",
--- 	recipe = {
--- 		{"default:glass", "default:wood", },
--- 		{"default:wood", "default:wood", },
--- 		{"default:wood", "default:wood", }
--- 	}
--- }) -- }}}1
--- -- {{{1 Decorative Wooden Door 2 (acacia)
--- minetest.register_craft({
--- 	output = "yadm:door_gwd2_locked 1",
--- 	recipe = {
--- 		{"default:glass", "default:acacia_wood", ""},
--- 		{"default:acacia_wood", "default:acacia_wood", "default:steel_ingot"},
--- 		{"default:acacia_wood", "default:acacia_wood", ""}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_gwd2 1",
--- 	recipe = {
--- 		{"default:glass", "default:acacia_wood", },
--- 		{"default:acacia_wood", "default:acacia_wood",},
--- 		{"default:acacia_wood", "default:acacia_wood",}
--- 	}
--- })
--- --}}}1
--- -- {{{1 Decorative Wooden Door 3 (jungle)
--- minetest.register_craft({
--- 	output = "yadm:door_gwd3_locked 1",
--- 	recipe = {
--- 		{"default:glass", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", "default:steel_ingot"},
--- 		{"default:junglewood", "default:junglewood", ""}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_gwd3 1",
--- 	recipe = {
--- 		{"default:glass", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", ""}
--- 	}
--- })
--- -- }}}1
 
+local trdoordefs = {
+--	{ Suffix, Desc Base, ImageName,
+	{ "wd1",	"Wooden Trap Door 1",		"trwood1" },
+	{ "wd2",	"Wooden Trap Door 2",		"tracacia1" },
+	{ "wd3",	"Wooden Trap Door 3",		"trjungle1" },
+}
 
--- -- {{{1 Wooden Door 1 (apple/default wood)
--- minetest.register_craft({ 
--- 	output = "yadm:door_wd1_locked 1",
--- 	recipe = {
--- 		{"default:wood", "default:wood", ""},
--- 		{"default:wood", "default:wood", "default:steel_ingot"},
--- 		{"default:wood", "default:wood", "default:stick"}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_wd1 1",
--- 	recipe = {
--- 		{"default:wood", "default:wood", ""},
--- 		{"default:wood", "default:wood", ""},
--- 		{"default:wood", "default:wood", "default:stick"}
--- 	}
--- }) -- }}}1
--- -- {{{1 Decorative Wooden Door 2 (acacia)
--- minetest.register_craft({
--- 	output = "yadm:door_wd2_locked 1",
--- 	recipe = {
--- 		{"default:acacia_wood", "default:acacia_wood", ""},
--- 		{"default:acacia_wood", "default:acacia_wood", "default:steel_ingot"},
--- 		{"default:acacia_wood", "default:acacia_wood", "default:stick"}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_wd2 1",
--- 	recipe = {
--- 		{"default:acacia_wood", "default:acacia_wood", ""},
--- 		{"default:acacia_wood", "default:acacia_wood", ""},
--- 		{"default:acacia_wood", "default:acacia_wood", "default:stick"}
--- 	}
--- })
--- --}}}1
--- -- {{{1 Decorative Wooden Door 3 (jungle)
--- minetest.register_craft({
--- 	output = "yadm:door_wd3_locked 1",
--- 	recipe = {
--- 		{"default:junglewood", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", "default:steel_ingot"},
--- 		{"default:junglewood", "default:junglewood", "default:stick"}
--- 	}
--- })
--- minetest.register_craft({
--- 	output = "yadm:door_wd3 1",
--- 	recipe = {
--- 		{"default:junglewood", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", ""},
--- 		{"default:junglewood", "default:junglewood", "default:stick"}
--- 	}
--- })
--- -- }}}1
+for i,ddef in ipairs(trdoordefs) do
+	local suffix = ddef[1]
+	local desc = ddef[2]
+	local img = ddef[3]
+
+	doors.register_trapdoor("yadm:trdoor_"..suffix, {
+		description = desc,
+		inventory_image = "yadm_"..img.."_front.png",
+		wield_image =  "yadm_"..img.."_front.png",
+		tile_front =  "yadm_"..img.."_front.png",
+		tile_side =  "yadm_"..img.."_side.png",
+		protected = false,
+		sounds = default.node_sound_wood_defaults(),
+		sound_open = "doors_wood_door_open",
+		sound_close = "doors_wood_door_close",
+		groups = {choppy = 1, level = 2, door = 1},
+	})
+end
+
