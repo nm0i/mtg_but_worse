@@ -31,7 +31,7 @@ end
 local config_setting  = "alt_spawnpoint"
 local spawnpoint = minetest.setting_get_pos(config_setting)
 
-local worldbox_limit
+local worldbox_limit = 2048
 minetest.register_globalstep(function(dtime)
       for _, player in pairs(minetest.get_connected_players()) do
          local name = player:get_player_name()
