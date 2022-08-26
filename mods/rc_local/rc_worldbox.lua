@@ -9,7 +9,7 @@ local sign = function(x)
 end
 
 
-local worldbox_flat_limit = 2048
+local worldbox_flat_limit = 4000
 local worldbox_vertical_limit = 1024
 local func_context = function(dtime)
    for _, player in pairs(minetest.get_connected_players()) do
